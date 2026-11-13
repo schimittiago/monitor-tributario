@@ -26,17 +26,8 @@ O resultado fica gravado no próprio repositório:
 1. Acesse **https://inlabs.in.gov.br** e clique em cadastrar.
 2. Confirme o e-mail. Guarde o e-mail e a senha — vão no passo 3.
 
-### 2. Criar o repositório no GitHub
-1. Crie uma conta em **https://github.com** (se ainda não tiver).
-2. Clique em **New repository** → nome: `monitor-tributario` → marque **Public** → **Create repository**.
-   *Público porque o conteúdo é o próprio DOU (informação pública) e assim a tarefa do Claude
-   consegue ler sem configuração extra. Sua senha do INLABS NÃO fica no código: fica nos
-   "Secrets", que ninguém vê.*
-3. Na página do repositório vazio, clique em **uploading an existing file**, arraste **todos
-   os arquivos e pastas** deste pacote (inclusive a pasta `.github`) e clique em **Commit changes**.
-   - Se a pasta `.github` não subir pelo navegador (alguns sistemas escondem pastas com ponto):
-     clique em **Add file → Create new file**, digite o nome `.github/workflows/monitor.yml`
-     e cole o conteúdo do arquivo `monitor.yml`.
+### 2. Repositório
+Já criado e com o código: este repositório (`schimittiago/monitor-tributario`).
 
 ### 3. Guardar o login do INLABS como segredo
 No repositório: **Settings → Secrets and variables → Actions → New repository secret**
@@ -52,9 +43,8 @@ o arquivo do dia na pasta `boletins/`.
 - ❌ erro no "git push" → **Settings → Actions → General → Workflow permissions →
   Read and write permissions** → Save.
 
-### 5. Avisar o Claude
-Mande para o Claude o endereço do repositório (ex.: `https://github.com/seu-usuario/monitor-tributario`)
-para ele passar a ler esses dados nas tarefas diárias.
+### 5. Pronto
+As tarefas agendadas do Claude (8h e 17h30) já leem `dados/ultimos.json` deste repositório.
 
 ---
 
