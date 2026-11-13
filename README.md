@@ -22,7 +22,12 @@ O resultado fica gravado no próprio repositório:
 
 ## Instalação (uns 15 minutos, uma vez só)
 
-### 1. Cadastro no INLABS
+> **INLABS fora do ar ou sem cadastro?** O robô funciona mesmo assim: sem login (ou com o
+> INLABS em manutenção) ele lê a página pública de leitura do DOU em in.gov.br. Essa página traz
+> título, órgão e o trecho inicial de cada ato; o INLABS traz o texto completo, por isso vale
+> cadastrar quando ele voltar.
+
+### 1. Cadastro no INLABS (recomendado, mas opcional)
 1. Acesse **https://inlabs.in.gov.br** e clique em cadastrar.
 2. Confirme o e-mail. Guarde o e-mail e a senha — vão no passo 3.
 

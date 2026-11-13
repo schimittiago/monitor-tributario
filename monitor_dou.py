@@ -90,7 +90,7 @@ def baixar_zips(data_iso: str, secoes: list[str]) -> dict[str, bytes]:
 
     email, senha = os.environ.get("INLABS_EMAIL"), os.environ.get("INLABS_SENHA")
     if not email or not senha:
-        sys.exit("Defina INLABS_EMAIL e INLABS_SENHA (no GitHub: Settings > Secrets and variables > Actions).")
+        raise RuntimeError("INLABS_EMAIL/INLABS_SENHA não definidos")
 
     s = requests.Session()
     for tentativa in range(3):
@@ -102,7 +102,7 @@ def baixar_zips(data_iso: str, secoes: list[str]) -> dict[str, bytes]:
             print(f"Falha no login (tentativa {tentativa + 1}): {e}")
     cookie = s.cookies.get("inlabs_session_cookie")
     if not cookie:
-        sys.exit("Login no INLABS falhou: confira e-mail e senha cadastrados em inlabs.in.gov.br.")
+        raise RuntimeError("login no INLABS falhou (serviço em manutenção ou e-mail/senha incorretos)")
 
     zips = {}
     for secao in secoes:
@@ -115,6 +115,59 @@ def baixar_zips(data_iso: str, secoes: list[str]) -> dict[str, bytes]:
         else:
             print(f"Sem arquivo {nome} (HTTP {r.status_code}) — normal se não houve edição.")
     return zips
+
+
+URL_LEITURA = "https://www.in.gov.br/leiturajornal?data={data}&secao={secao}"
+URL_ATO = "https://www.in.gov.br/web/dou/-/{slug}"
+UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36"}
+
+
+def parse_leitura(pagina_html: str, secao: str) -> list[dict]:
+    """Extrai os atos do JSON embutido na página pública de leitura do DOU."""
+    m = re.search(r'<script[^>]*id="params"[^>]*>(.*?)</script>', pagina_html, re.S)
+    if not m:
+        return []
+    try:
+        dados = json.loads(m.group(1))
+    except json.JSONDecodeError:
+        return []
+    atos = []
+    for it in dados.get("jsonArray") or []:
+        slug = it.get("urlTitle") or ""
+        resumo = texto_limpo(it.get("content") or "")
+        atos.append({
+            "id": "web-" + (slug or str(it.get("classPK") or len(atos))),
+            "secao": it.get("pubName") or secao.upper(),
+            "data_publicacao": it.get("pubDate", ""),
+            "edicao": str(it.get("editionNumber", "")),
+            "pagina": str(it.get("numberPage", "")),
+            "tipo": it.get("artType", ""),
+            "orgao": it.get("hierarchyStr", ""),
+            "titulo": texto_limpo(it.get("title") or it.get("titulo") or ""),
+            "ementa": "",
+            "texto": resumo,
+            "url": URL_ATO.format(slug=slug) if slug else "",
+        })
+    return atos
+
+
+def ler_pagina_publica(data_iso: str, secoes: list[str]) -> list[dict]:
+    """Plano B sem login: página in.gov.br/leiturajornal (traz título, órgão e trecho inicial de cada ato)."""
+    import requests
+
+    d = datetime.fromisoformat(data_iso).strftime("%d-%m-%Y")
+    atos = []
+    for secao in secoes:
+        url = URL_LEITURA.format(data=d, secao=secao.lower())
+        try:
+            r = requests.get(url, headers=UA, timeout=90)
+        except requests.RequestException as e:
+            print(f"Página pública {secao}: erro {e}")
+            continue
+        lidos = parse_leitura(r.text, secao) if r.ok else []
+        print(f"Página pública {secao}: HTTP {r.status_code}, {len(lidos)} atos")
+        atos += lidos
+    return atos
 
 
 # ----------------------------------------------------------------- leitura
@@ -185,11 +238,11 @@ def classificar(ato: dict, cfg: dict) -> dict | None:
 
     resumo = ato["ementa"] or ato["texto"][:400]
     return {
-        **{k: v for k, v in ato.items() if k != "texto"},
+        **{k: v for k, v in ato.items() if k not in ("texto", "_fonte")},
         "resumo": resumo[:600],
         "nivel": nivel,
         "termos": sorted(set(hits_reforma + hits_trib))[:12],
-        "fonte": "DOU (INLABS)",
+        "fonte": ato.get("_fonte", "DOU (INLABS)"),
     }
 
 
@@ -254,16 +307,29 @@ def main():
 
     if args.pasta_xml:
         zips = {p.stem.split("-")[-1]: p.read_bytes() for p in Path(args.pasta_xml).glob("*.zip")}
+        fonte_atos = list(ler_atos(zips))
     else:
-        zips = baixar_zips(data_iso, cfg["secoes"])
+        fonte_atos = []
+        try:
+            fonte_atos = list(ler_atos(baixar_zips(data_iso, cfg["secoes"])))
+        except Exception as e:  # noqa: BLE001
+            print(f"INLABS indisponível: {e}")
+        if not fonte_atos:
+            print("Usando o plano B: página pública de leitura do DOU (in.gov.br).")
+            fonte_atos = ler_pagina_publica(data_iso, cfg["secoes"])
+            for a in fonte_atos:
+                a["_fonte"] = "DOU (in.gov.br)"
 
     lidos, relevantes = 0, []
-    for ato in ler_atos(zips):
+    for ato in fonte_atos:
         lidos += 1
         r = classificar(ato, cfg)
         if r:
             relevantes.append(r)
 
+    if lidos == 0:
+        sys.exit(f"{data_iso}: nenhum ato lido (INLABS e página pública indisponíveis, ou dia sem edição). "
+                 "Nada foi gravado.")
     atos = gravar(data_iso, relevantes)
     alta = sum(a["nivel"] == "alta" for a in atos)
     print(f"{data_iso}: {lidos} atos lidos, {len(relevantes)} relevantes nesta execução, "
