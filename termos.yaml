@@ -33,7 +33,9 @@ reforma:
   - "cashback"
   - "zona franca de manaus"
 
-# Siglas: comparadas como palavra inteira e em MAIÚSCULAS (evita falso positivo)
+# Siglas: comparadas como palavra inteira e em MAIÚSCULAS. Só contam se o ato também
+# tiver contexto tributário (imposto, contribuição, tributo, alíquota...), para não pegar
+# nomes de empresa como "IBS Comercializadora".
 siglas_reforma:
   - "CBS"
   - "IBS"
@@ -59,7 +61,6 @@ tributario:
   - "ato cotepe"
   - "solução de consulta"
   - "ato declaratório interpretativo"
-  - "nota técnica"
   - "documento fiscal"
   - "nota fiscal"
   - "nf-e"
@@ -105,8 +106,8 @@ tipos_normativos:
   - "nota técnica"
   - "parecer normativo"
 
-# Ruído: se o ato só entrou pelo órgão (sem termo tributário),
-# e contém uma destas expressões, é descartado.
+# Atos que entram SÓ pelo órgão (sem nenhum termo) precisam ser de um tipo normativo
+# (lista acima). Além disso, se contiverem uma destas expressões, são descartados.
 ruido:
   - "nomear"
   - "exonerar"
@@ -128,3 +129,4 @@ ruido:
   - "extrato de contrato"
   - "licitação"
   - "pregão"
+  - "pauta de julgamento"

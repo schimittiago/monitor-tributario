@@ -39,6 +39,8 @@ NIVEL_NOME = {"alta": "Reforma Tributária", "media": "Tributário — normativo
 
 
 # ----------------------------------------------------------------- utilidades
+CONTEXTO_TRIB = re.compile(r"(?<![a-z])(imposto|contribuic|tribut|aliquota|fiscal|fiscais|bens e servicos|comite gestor)")
+
 def normalizar(txt: str) -> str:
     """minúsculas, sem acento, 'nº 214' -> '214', espaços simples."""
     txt = unicodedata.normalize("NFKD", txt or "")
@@ -214,7 +216,8 @@ def classificar(ato: dict, cfg: dict) -> dict | None:
     tipo = normalizar(ato["tipo"])
 
     hits_reforma = [t for t, p in cfg["reforma"] if p.search(alvo)]
-    hits_reforma += [s for s, p in cfg["siglas"] if p.search(bruto)]
+    if CONTEXTO_TRIB.search(alvo):
+        hits_reforma += [s for s, p in cfg["siglas"] if p.search(bruto)]
     hits_trib = [t for t, p in cfg["tributario"] if p.search(alvo)]
     do_orgao = any(o in orgao for o in cfg["orgaos"])
     normativo = any(tipo.startswith(t) for t in cfg["tipos"])
@@ -222,7 +225,9 @@ def classificar(ato: dict, cfg: dict) -> dict | None:
     if not (hits_reforma or hits_trib or do_orgao):
         return None
     if not (hits_reforma or hits_trib):
-        # entrou só pelo órgão: descarta atos de pessoal/rotina
+        # entrou só pelo órgão: precisa ser ato normativo e não ser pessoal/rotina
+        if not normativo:
+            return None
         cabeca = normalizar(ato["titulo"] + " " + ato["ementa"] + " " + ato["texto"][:600])
         if any(p.search(cabeca) for _, p in cfg["ruido"]):
             return None
