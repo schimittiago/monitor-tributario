@@ -1,0 +1,130 @@
+# =============================================================
+# Termos e órgãos que o leitor do DOU usa para filtrar os atos.
+# Edite à vontade: cada linha começa com "- " e o texto entre aspas.
+# Maiúsculas/minúsculas, acentos e "nº"/"n°" NÃO importam (exceto em "siglas").
+# O termo casa com palavra inteira. Termine com * para casar o começo da
+# palavra (ex.: "tributari*" casa tributário, tributária, tributários...).
+# =============================================================
+
+# Seções do DOU a baixar. DO1 = atos normativos; DO1E = edições extras da Seção 1.
+# (DO2 = pessoal, DO3 = contratos/editais — normalmente não interessam)
+secoes:
+  - DO1
+  - DO1E
+
+# --- Nível ALTO: Reforma Tributária do consumo ---
+reforma:
+  - "reforma tributária"
+  - "contribuição sobre bens e serviços"
+  - "imposto sobre bens e serviços"
+  - "imposto seletivo"
+  - "comitê gestor do imposto sobre bens e serviços"
+  - "comitê gestor do ibs"
+  - "lei complementar nº 214"
+  - "lc 214"
+  - "lei complementar nº 227"
+  - "lc 227"
+  - "emenda constitucional nº 132"
+  - "ec 132"
+  - "split payment"
+  - "pagamento cindido"
+  - "declaração de regimes específicos"
+  - "devolução personalizada"
+  - "cashback"
+  - "zona franca de manaus"
+
+# Siglas: comparadas como palavra inteira e em MAIÚSCULAS (evita falso positivo)
+siglas_reforma:
+  - "CBS"
+  - "IBS"
+  - "CGIBS"
+  - "DeRE"
+
+# --- Nível MÉDIO: legislação tributária em geral ---
+tributario:
+  - "icms"
+  - "pis/pasep"
+  - "cofins"
+  - "irpj"
+  - "csll"
+  - "ipi"
+  - "iof"
+  - "imposto sobre a renda"
+  - "imposto sobre produtos industrializados"
+  - "simples nacional"
+  - "tributari*"          # tributário, tributária, tributários...
+  - "contribuição previdenciária"
+  - "convênio icms"
+  - "ajuste sinief"
+  - "ato cotepe"
+  - "solução de consulta"
+  - "ato declaratório interpretativo"
+  - "nota técnica"
+  - "documento fiscal"
+  - "nota fiscal"
+  - "nf-e"
+  - "nfs-e"
+  - "efd"
+  - "sped"
+  - "dctf"
+  - "transação tributária"
+  - "parcelamento"
+  - "benefício fiscal"
+  - "incentivo fiscal"
+  - "drawback"
+  - "obrigação acessória"
+
+# Órgãos (campo "órgão" do ato). Ato desses órgãos entra mesmo sem termo,
+# desde que não seja ato de pessoal / rotina (ver "ruido").
+orgaos:
+  - "secretaria especial da receita federal"
+  - "procuradoria-geral da fazenda nacional"
+  - "conselho nacional de política fazendária"
+  - "comitê gestor do imposto sobre bens e serviços"
+  - "comitê gestor do simples nacional"
+  - "conselho administrativo de recursos fiscais"
+  - "ministério da fazenda/gabinete do ministro"
+  - "secretaria extraordinária da reforma tributária"
+
+# Tipos de ato considerados normativos (sobem para nível médio)
+tipos_normativos:
+  - "lei"
+  - "lei complementar"
+  - "medida provisória"
+  - "decreto"
+  - "instrução normativa"
+  - "ato conjunto"
+  - "ato declaratório interpretativo"
+  - "solução de consulta"
+  - "solução de divergência"
+  - "resolução"
+  - "convênio"
+  - "ajuste"
+  - "portaria normativa"
+  - "portaria conjunta"
+  - "nota técnica"
+  - "parecer normativo"
+
+# Ruído: se o ato só entrou pelo órgão (sem termo tributário),
+# e contém uma destas expressões, é descartado.
+ruido:
+  - "nomear"
+  - "exonerar"
+  - "dispensar"
+  - "designar"
+  - "aposentad*"
+  - "aposentar"
+  - "pensão"
+  - "remoção"
+  - "lotação"
+  - "cessão"
+  - "férias"
+  - "substituto eventual"
+  - "habilita*"
+  - "credencia*"
+  - "despachante aduaneiro"
+  - "reporto"
+  - "inscrição no cadastro"
+  - "extrato de contrato"
+  - "licitação"
+  - "pregão"

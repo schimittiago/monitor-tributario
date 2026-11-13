@@ -1,0 +1,49 @@
+name: Leitor DOU tributário
+
+on:
+  schedule:
+    # Horários em UTC (Brasília = UTC-3). Segunda a sexta.
+    - cron: "40 9 * * 1-5"    # 06h40 — edição normal do dia
+    - cron: "0 19 * * 1-5"    # 16h00 — pega edições extras
+    - cron: "30 22 * * 1-5"   # 19h30 — extras publicadas no fim do dia
+  workflow_dispatch:          # botão "Run workflow" para rodar na hora
+    inputs:
+      data:
+        description: "Data AAAA-MM-DD (vazio = hoje)"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: leitor-dou
+  cancel-in-progress: false
+
+jobs:
+  ler:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Ler o DOU
+        env:
+          INLABS_EMAIL: ${{ secrets.INLABS_EMAIL }}
+          INLABS_SENHA: ${{ secrets.INLABS_SENHA }}
+        run: |
+          if [ -n "${{ github.event.inputs.data }}" ]; then
+            python monitor_dou.py --data "${{ github.event.inputs.data }}"
+          else
+            python monitor_dou.py
+          fi
+      - name: Salvar resultados no repositório
+        run: |
+          git config user.name "leitor-dou"
+          git config user.email "actions@users.noreply.github.com"
+          git add dados boletins
+          git diff --cached --quiet || git commit -m "DOU $(TZ=America/Sao_Paulo date +%F\ %H:%M)"
+          git push
