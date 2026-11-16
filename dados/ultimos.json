@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-11-13T23:32-03:00",
+ "atualizado_em": "2026-11-16T16:48-03:00",
  "atos": [
   {
    "id": "web-ato-conjunto-rfb/cgibs-n-7-de-11-de-novembro-de-2026-744148934",
@@ -66,6 +66,47 @@
    "fonte": "DOU (in.gov.br)",
    "coletado_em": "2026-11-13T17:05-03:00",
    "data_iso": "2026-11-13"
+  },
+  {
+   "id": "web-portaria-suframa-n-2.809-de-12-de-novembro-de-2026-744428676",
+   "secao": "DO1",
+   "data_publicacao": "16/11/2026",
+   "edicao": "215",
+   "pagina": "259",
+   "tipo": "Portaria",
+   "orgao": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços/Superintendência da Zona Franca de Manaus",
+   "titulo": "PORTARIA SUFRAMA Nº 2.809, DE 12 DE NOVEMBRO DE 2026",
+   "ementa": "",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-suframa-n-2.809-de-12-de-novembro-de-2026-744428676",
+   "resumo": "PORTARIA SUFRAMA Nº 2.809, DE 12 DE NOVEMBRO DE 2026 Aprova o projeto técnico-econômico industrial pleno, do tipo diversificação, da empresa REFLECT INDÚSTRIA E COMÉRCIO LTDA. O SUPERINTENDENTE DA SUPERINTENDÊNCIA DA ZONA FRANCA DE MANAUS, no uso da competência que lhe foi delegada pelo art. 11, § 3º, da Resolução CAS-SUFRAMA nº 205, de 25 de fevereiro de 2021, e tendo em vista o que consta do pro",
+   "nivel": "alta",
+   "termos": [
+    "zona franca de manaus"
+   ],
+   "fonte": "DOU (in.gov.br)",
+   "coletado_em": "2026-11-16T16:48-03:00",
+   "data_iso": "2026-11-16"
+  },
+  {
+   "id": "web-solucao-de-consulta-n-4.043-srrf04/disit-de-10-de-novembro-de-2026-744452952",
+   "secao": "DO1",
+   "data_publicacao": "16/11/2026",
+   "edicao": "215",
+   "pagina": "273",
+   "tipo": "Solução de Consulta",
+   "orgao": "Ministério da Fazenda/Secretaria Especial da Receita Federal do Brasil/Secretaria-Adjunta/Superintendência Regional da Receita Federal do Brasil 4ª Região Fiscal/Divisão de Tributação",
+   "titulo": "SOLUÇÃO DE CONSULTA Nº 4.043 - SRRF04/DISIT, DE 10 DE NOVEMBRO DE 2026",
+   "ementa": "",
+   "url": "https://www.in.gov.br/web/dou/-/solucao-de-consulta-n-4.043-srrf04/disit-de-10-de-novembro-de-2026-744452952",
+   "resumo": "SOLUÇÃO DE CONSULTA Nº 4.043 - SRRF04/DISIT, DE 10 DE NOVEMBRO DE 2026 Assunto: Contribuição Social sobre o Lucro Líquido - CSLL BÔNUS DE ADIMPLÊNCIA FISCAL. A parcela do bônus de adimplência fiscal somente pode ser gerada em relação ao período de apuração da correspondente base de cálculo da CSLL. É incabível a constituição ou apuração retroativa do benefício relativamente a períodos pretéritos e",
+   "nivel": "media",
+   "termos": [
+    "csll",
+    "solução de consulta"
+   ],
+   "fonte": "DOU (in.gov.br)",
+   "coletado_em": "2026-11-16T16:48-03:00",
+   "data_iso": "2026-11-16"
   }
  ]
 }
