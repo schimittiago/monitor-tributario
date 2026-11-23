@@ -1,5 +1,5 @@
 {
- "atualizado_em": "2026-11-19T22:00-03:00",
+ "atualizado_em": "2026-11-23T18:38-03:00",
  "atos": [
   {
    "id": "web-ato-conjunto-rfb/cgibs-n-7-de-11-de-novembro-de-2026-744148934",
@@ -636,6 +636,88 @@
    "fonte": "DOU (in.gov.br)",
    "coletado_em": "2026-11-19T15:37-03:00",
    "data_iso": "2026-11-19"
+  },
+  {
+   "id": "web-portaria-rfb-n-763-de-19-de-novembro-de-2026-745573207",
+   "secao": "DO1",
+   "data_publicacao": "23/11/2026",
+   "edicao": "219",
+   "pagina": "100",
+   "tipo": "Portaria",
+   "orgao": "Ministério da Fazenda/Secretaria Especial da Receita Federal do Brasil",
+   "titulo": "PORTARIA RFB Nº 763, DE 19 DE NOVEMBRO DE 2026",
+   "ementa": "",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-rfb-n-763-de-19-de-novembro-de-2026-745573207",
+   "resumo": "PORTARIA RFB Nº 763, DE 19 DE NOVEMBRO DE 2026 Dispõe sobre o Piloto da Reforma Tributária do Consumo relativo à Contribuição Social sobre Bens e Serviços - Piloto RTC-CBS. O SECRETÁRIO ESPECIAL DA RECEITA FEDERAL DO BRASIL, no uso da atribuição que lhe confere o art. 350, caput, inciso III, do Regimento Interno da Secretaria Especial da Receita Federal do Brasil, aprovado pela Portaria ME nº 284,",
+   "nivel": "alta",
+   "termos": [
+    "CBS",
+    "reforma tributária",
+    "tributari*"
+   ],
+   "fonte": "DOU (in.gov.br)",
+   "coletado_em": "2026-11-23T18:38-03:00",
+   "data_iso": "2026-11-23"
+  },
+  {
+   "id": "web-portaria-suframa-n-2.804-de-5-de-novembro-de-2026-745568516",
+   "secao": "DO1",
+   "data_publicacao": "23/11/2026",
+   "edicao": "219",
+   "pagina": "92",
+   "tipo": "Portaria",
+   "orgao": "Ministério do Desenvolvimento, Indústria, Comércio e Serviços/Superintendência da Zona Franca de Manaus",
+   "titulo": "PORTARIA SUFRAMA Nº 2.804, DE 5 DE NOVEMBRO DE 2026",
+   "ementa": "",
+   "url": "https://www.in.gov.br/web/dou/-/portaria-suframa-n-2.804-de-5-de-novembro-de-2026-745568516",
+   "resumo": "PORTARIA SUFRAMA Nº 2.804, DE 5 DE NOVEMBRO DE 2026 Aprova o projeto técnico-econômico industrial pleno, do tipo diversificação, da empresa REICON CONDUTORES ELÉTRICOS LTDA. O SUPERINTENDENTE DA SUPERINTENDÊNCIA DA ZONA FRANCA DE MANAUS, no uso da competência que lhe foi delegada pelo art. 11, § 3º, da Resolução CAS-SUFRAMA nº 205, de 25 de fevereiro de 2021, e tendo em vista o que consta do proce",
+   "nivel": "alta",
+   "termos": [
+    "zona franca de manaus"
+   ],
+   "fonte": "DOU (in.gov.br)",
+   "coletado_em": "2026-11-23T18:38-03:00",
+   "data_iso": "2026-11-23"
+  },
+  {
+   "id": "web-ato-declaratorio-executivo-eqben/deleben/srrf08/rfb-n-1.721-de-18-de-novembro-de-2026-745556447",
+   "secao": "DO1",
+   "data_publicacao": "23/11/2026",
+   "edicao": "219",
+   "pagina": "105",
+   "tipo": "Ato Declaratório",
+   "orgao": "Ministério da Fazenda/Secretaria Especial da Receita Federal do Brasil/Secretaria-Adjunta/Superintendência Regional da Receita Federal do Brasil 8ª Região Fiscal/Delegacia da Receita Federal do Brasil em Sorocaba",
+   "titulo": "ATO DECLARATÓRIO EXECUTIVO EQBEN/DELEBEN/SRRF08ª/RFB Nº 1.721, DE 18 DE NOVEMBRO DE 2026",
+   "ementa": "",
+   "url": "https://www.in.gov.br/web/dou/-/ato-declaratorio-executivo-eqben/deleben/srrf08/rfb-n-1.721-de-18-de-novembro-de-2026-745556447",
+   "resumo": "ATO DECLARATÓRIO EXECUTIVO EQBEN/DELEBEN/SRRF08ª/RFB Nº 1.721, DE 18 DE NOVEMBRO DE 2026 Cancela o registro referente ao regime de suspensão do IPI para pessoa jurídica preponderantemente exportadora, de que trata o art. 29, § 1º, inciso II, da Lei nº 10.637, de 30 de dezembro de 2002. O AUDITOR FISCAL DA RECEITA FEDERAL DO BRASIL signatário, no uso das atribuições que lhe conferem o artigo 303 do",
+   "nivel": "media",
+   "termos": [
+    "ipi"
+   ],
+   "fonte": "DOU (in.gov.br)",
+   "coletado_em": "2026-11-23T18:38-03:00",
+   "data_iso": "2026-11-23"
+  },
+  {
+   "id": "web-ato-declaratorio-executivo-eqben/deleben/srrf08/rfb-n-1.726-de-19-de-novembro-de-2026-745575053",
+   "secao": "DO1",
+   "data_publicacao": "23/11/2026",
+   "edicao": "219",
+   "pagina": "105",
+   "tipo": "Ato Declaratório",
+   "orgao": "Ministério da Fazenda/Secretaria Especial da Receita Federal do Brasil/Secretaria-Adjunta/Superintendência Regional da Receita Federal do Brasil 8ª Região Fiscal/Delegacia da Receita Federal do Brasil em Sorocaba",
+   "titulo": "ATO DECLARATÓRIO EXECUTIVO EQBEN/DELEBEN/SRRF08ª/RFB Nº 1.726, DE 19 DE NOVEMBRO DE 2026",
+   "ementa": "",
+   "url": "https://www.in.gov.br/web/dou/-/ato-declaratorio-executivo-eqben/deleben/srrf08/rfb-n-1.726-de-19-de-novembro-de-2026-745575053",
+   "resumo": "ATO DECLARATÓRIO EXECUTIVO EQBEN/DELEBEN/SRRF08ª/RFB Nº 1.726, DE 19 DE NOVEMBRO DE 2026 Cancela o registro referente ao regime de suspensão do IPI para pessoa jurídica preponderantemente exportadora, de que trata o art. 29, § 1º, inciso II, da Lei nº 10.637, de 30 de dezembro de 2002. O AUDITOR FISCAL DA RECEITA FEDERAL DO BRASIL signatário, no uso das atribuições que lhe conferem o artigo 303 do",
+   "nivel": "media",
+   "termos": [
+    "ipi"
+   ],
+   "fonte": "DOU (in.gov.br)",
+   "coletado_em": "2026-11-23T18:38-03:00",
+   "data_iso": "2026-11-23"
   }
  ]
 }
